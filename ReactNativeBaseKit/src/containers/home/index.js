@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 class Home extends React.Component {
   componentDidMount() {
     const { getMovies,userDetails } = this.props;
-
+    console.log('userDetails-----',userDetails)
     getMovies();
   }
 

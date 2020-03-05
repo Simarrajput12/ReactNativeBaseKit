@@ -17,13 +17,16 @@ export default function user(state = initialState, {
   payload, type,
 }) {
   switch (type) {
+   
     case GET_MOVIES_SUCCESS:
+      console.log('payload>>>>>>',payload);
       return {
         ...state,
         movies: uniqBy([...state.movies, ...payload], 'id'),
       };
 
     case LOGIN_SUCCESS:
+      console.log('payload>>>>>>',payload);
       return {
         ...state,
         userDetails: payload,
