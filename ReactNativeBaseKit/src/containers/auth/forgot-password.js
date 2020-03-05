@@ -94,6 +94,7 @@ class ForgotPassword extends React.Component {
             <Image
               source={Constants.Images.logo}
               style={AuthStyles.logoStyle}
+              resizeMode='contain'
             />
             <Text style={AuthStyles.textStyle}>{forgotPass}</Text>
             <Text style={AuthStyles.description}>{desciption}</Text>

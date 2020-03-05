@@ -124,6 +124,7 @@ class Signup extends React.Component {
             <Image
               source={Constants.Images.logo}
               style={AuthStyles.logoStyle}
+              resizeMode='contain'
             />
             <TextInput
               container={AuthStyles.signupTextInputContainer}

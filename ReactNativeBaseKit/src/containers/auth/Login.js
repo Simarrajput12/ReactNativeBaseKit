@@ -136,6 +136,7 @@ class Login extends React.Component {
             <Image
               source={Constants.Images.logo}
               style={AuthStyles.logoStyle}
+              resizeMode='contain'
             />
             <TextInput
               ref={this.usernameRef}

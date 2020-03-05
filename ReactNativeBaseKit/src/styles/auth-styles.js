@@ -36,6 +36,7 @@ const styles = {
     height: (Constants.BaseStyle.DEVICE_WIDTH / 100) * 50,
     marginVertical: (Constants.BaseStyle.DEVICE_HEIGHT / 100) * 8,
     width: (Constants.BaseStyle.DEVICE_WIDTH / 100) * 50,
+    
   },
   navigationBarStyle: { ...ifIphoneX({ height: 64 }, { height: 44 }) },
   sepratorStyle: {

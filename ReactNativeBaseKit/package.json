@@ -67,7 +67,6 @@
   "jest": {
     "preset": "react-native"
   },
-  "author": "Manish Budhiraja",
-  "license": "MIT",
-  "email": "iammanishbudhiraja@gmail.com"
+  "author": "Simar Rajput",
+  "email": "simarrajput12@gmail.com"
 }
