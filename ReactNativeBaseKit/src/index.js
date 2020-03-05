@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet,Text} from 'react-native';
+import {View, StyleSheet,Text,} from 'react-native';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/es/integration/react';
 import configureStore from './config/configure-store';
@@ -8,6 +8,8 @@ import Constants from './constants';
 import './utilities/string-en';
 import {Loader} from './components';
 import NetInfo from "@react-native-community/netinfo";
+import NoInternet from '../src/components/common/no-internet'
+import { SafeAreaView } from 'react-navigation';
 const {store, persistor} = configureStore();
 
 const styles = StyleSheet.create({
@@ -21,31 +23,28 @@ class src extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      connection_Status : ""
+      connection_Status : false
     }
   }
-
-  
-
 
   componentDidMount() {
- this.checkInternetConnectivity()
+   this.checkInternetConnectivity()
   }
 
-  componentDidUpdate(){
-    const {connection_Status} =this.state
-    if(connection_Status !== "Online"){
-      console.log(connection_Status,"connection_Status")
-   this.internertCheck =setInterval(() => {
-    console.log(connection_Status,"connection_Status1")
-        this.checkInternetConnectivity()
-      }, 2000,()=>{
-        clearInterval(this.internertCheck)
-      });
-    }
-  }
+  // componentDidUpdate(){
+  //   const {connection_Status} =this.state
+  //   if(connection_Status !== true){
+  //     console.log(connection_Status,"connection_Status")
+  //  this.internertCheck =setInterval(() => {
+  //   console.log(connection_Status,"connection_Status1")
+  //       this.checkInternetConnectivity()
+  //     }, 2000,()=>{
+  //       clearInterval(this.internertCheck)
+  //     });
+  //   }
+  // }
+  
   checkInternetConnectivity(){
-
     NetInfo.isConnected.addEventListener(
       'connectionChange',
       this._handleConnectivityChange
@@ -54,11 +53,12 @@ class src extends React.Component {
 
     if(isConnected == true)
     {
-      this.setState({connection_Status : "Online"})
+      this.setState({connection_Status : true})
+      console.log('stats',this.state.connection_Status)
     }
     else
     {
-      this.setState({connection_Status : "Offline"})
+      this.setState({connection_Status : false})
     }
 
   });
@@ -75,33 +75,16 @@ class src extends React.Component {
  
   }
 
-  // handleNetwork = () => {
-  //   function handleFirstConnectivityChange() {
-  //     NetInfo.isConnected.removeEventListener(
-  //       'connectionChange',
-  //       handleFirstConnectivityChange,
-  //     );
-  //   }
-  //   NetInfo.isConnected.addEventListener(
-  //     'connectionChange',
-  //     handleFirstConnectivityChange,
-  //   );
-  //   NetInfo.isConnected.fetch().then((isConnected) => {
-  //     if (!this.state.isOnceConnected && isConnected) {
-  //       this.setState({ isOnceConnected: true });
-  //     }
-  //   });
-  // };
 
   _handleConnectivityChange = (isConnected) => {
  
     if(isConnected == true)
       {
-        this.setState({connection_Status : "Online"})
+        this.setState({connection_Status : true})
       }
       else
       {
-        this.setState({connection_Status : "Offline"})
+        this.setState({connection_Status : false})
       }
   };
 
@@ -109,15 +92,17 @@ class src extends React.Component {
     const { connection_Status} = this.state;
     
     return (
+      <SafeAreaView style={{flex:1}}>
       <View style={styles.container}>
         
         <Provider store={store}>
           <PersistGate loading={<Loader />} persistor={persistor}>
-          {connection_Status == "Online" ?
-            <Root />: <Text> No Internet Connection </Text> }
+          {connection_Status ?
+            <Root />: <NoInternet title={'Lost Internet Connection'} message={'Please connect your internet connection'}/> }
           </PersistGate>
         </Provider> 
       </View>
+      </SafeAreaView>
     );
   }
 }

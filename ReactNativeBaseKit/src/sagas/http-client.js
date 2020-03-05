@@ -1,12 +1,12 @@
 import { call, select, put } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { ToastActionsCreators } from 'react-native-redux-toast';
-import { NetInfo } from 'react-native';
 import Idx from 'idx';
 import { showLoader, hideLoader } from '../actions/app-action-types';
 import { logoutSuccess,
   setAuthenticationToken } from '../actions/user-actions-types';
 import axiosInstance from '../utilities/axios-instance';
+import NetInfo from "@react-native-community/netinfo";
 
 export const checkInternetConnectivity = () => new Promise((resolve, reject) => {
   NetInfo.isConnected.fetch().then((isConnected) => {
@@ -75,6 +75,7 @@ function* HttpClient(payload) {
       }
     }
   } catch (error) {
+    console.log(error,'error')
     yield put(hideLoader());
     yield put(
       ToastActionsCreators.displayInfo(
