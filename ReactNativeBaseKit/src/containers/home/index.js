@@ -4,9 +4,11 @@ import TimerMixin from 'react-timer-mixin';
 import ReactMixin from 'react-mixin';
 import { arrayOf, shape, string, func } from 'prop-types';
 import { connect } from 'react-redux';
+import {AuthStyles} from '../../styles';
+import {Button} from '../../components';
 import Constants from '../../constants';
 import * as userActions from '../../actions/user-actions-types';
-
+import {logoutSuccess} from '../../actions/user-actions-types';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Constants.Colors.DASHBOARD_BG_COLOR,
@@ -23,6 +25,13 @@ class Home extends React.Component {
     getMovies();
   }
 
+
+  onLogout = () => {
+    alert('dfjbs')
+    // const { logoutSuccess } = this.props;
+    logoutSuccess();
+  }
+  
   render() {
     const { movies,userDetails } = this.props;
     console.log('userDetails',userDetails)
@@ -42,9 +51,15 @@ class Home extends React.Component {
               <Text style={styles.textStyle}>
                 {`Release Year: ${releaseYear}`}
               </Text>
+              
             </View>
           )}
         />
+        <Button
+              onPress={this.onLogout}
+              style={AuthStyles.logOutbuttonStyle}
+              title={'Logout'}
+            />
       </View>
     );
   }
@@ -66,5 +81,5 @@ const mapStateToProps = ({ user: { movies,userDetails } }) => ({ movies,userDeta
 
 export default connect(
   mapStateToProps,
-  { getMovies: userActions.getMovies }
+  { getMovies: userActions.getMovies },
 )(Home);

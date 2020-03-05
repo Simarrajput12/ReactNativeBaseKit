@@ -9,6 +9,13 @@ const styles = {
     marginTop: (Constants.BaseStyle.DEVICE_HEIGHT / 100) * 2,
     width: (Constants.BaseStyle.DEVICE_WIDTH / 100) * 90,
   },
+  logOutbuttonStyle: {
+    backgroundColor: Constants.Colors.BUTTON_COLOR,
+    marginTop: (Constants.BaseStyle.DEVICE_HEIGHT / 100) * 2,
+    width: (Constants.BaseStyle.DEVICE_WIDTH / 100) * 50,
+    alignSelf:'center',
+    bottom:20
+  },
   container: {
     backgroundColor: Constants.Colors.WHITE,
     flex: 1,

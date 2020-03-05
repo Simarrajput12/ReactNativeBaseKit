@@ -15,25 +15,6 @@ import {
 } from '../actions/user-actions-types';
 import httpClient from './http-client';
 
-// export function* login() {
-//   yield put(loginRequested());
-
-//   const {error, result} = yield call(httpClient, {
-//     data: {
-//       email: '',
-//       password: '',
-//     },
-//     method: 'post',
-//     url: '/abc',
-//   });
-
-//   if (error) {
-//     yield put(loginFailure(error));
-//   } else {
-//     console.log(result,'result')
-//     yield put(loginSuccess(result));
-//   }
-// }
 
 export function* login({
   payload: {
@@ -44,13 +25,11 @@ export function* login({
   const payload = {
     data,
     method: 'post',
-    url: '/abc',
+    url: 'http://fakerestapi.azurewebsites.net/api/Users',
   };
-  console.log('payload',payload)
   const {
     result, error,
   } = yield call(httpClient, payload);
-
   if (error) {
     yield put(loginFailure(error));
     if (callback && error.message === 'Kindly verify your email first to login.') {
@@ -61,22 +40,24 @@ export function* login({
   }
 }
 
+
 export function* logout() {
   yield put(logoutRequested());
-
-  const {error} = yield call(httpClient, {
-    data: {
-      email: '',
-      password: '',
-    },
+  const token = yield select(({ user: { userDetails: { ID} } }) => ID);
+  const payload = {
+    data: { ID: token },
     method: 'put',
-    url: '/abc',
-  });
+    url: '/api/Users',
+  };
+  const {
+    result, error,
+  } = yield call(httpClient, payload);
 
   if (error) {
     yield put(logoutFailure(error));
   } else {
     yield put(logoutSuccess());
+    yield put(ToastActionsCreators.displayInfo(result.message));
   }
 }
 

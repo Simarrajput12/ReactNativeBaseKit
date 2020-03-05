@@ -48,7 +48,8 @@ export default function nav(state = initialState, action) {
         }),
         state
       );
-    case GO_BACK:
+    
+      case GO_BACK:
       return AppNavigator.router.getStateForAction(
         NavigationActions.back(),
         state

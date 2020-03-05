@@ -77,8 +77,9 @@ class Login extends React.Component {
       return;
     }
     const requestObject = {
-      email: username,
-      password,
+      ID:1,
+      UserName: username,
+      Password:password,
     };
 
     login({
