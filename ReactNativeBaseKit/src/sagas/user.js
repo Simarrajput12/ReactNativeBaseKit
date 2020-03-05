@@ -15,20 +15,47 @@ import {
 } from '../actions/user-actions-types';
 import httpClient from './http-client';
 
-export function* login() {
-  yield put(loginRequested());
+// export function* login() {
+//   yield put(loginRequested());
 
-  const {error, result} = yield call(httpClient, {
-    data: {
-      email: '',
-      password: '',
-    },
+//   const {error, result} = yield call(httpClient, {
+//     data: {
+//       email: '',
+//       password: '',
+//     },
+//     method: 'post',
+//     url: '/abc',
+//   });
+
+//   if (error) {
+//     yield put(loginFailure(error));
+//   } else {
+//     console.log(result,'result')
+//     yield put(loginSuccess(result));
+//   }
+// }
+
+export function* login({
+  payload: {
+    data,callback,
+  },
+}) {
+  yield put(loginRequested());
+  const payload = {
+    data,
     method: 'post',
     url: '/abc',
-  });
+  };
+  console.log('payload',payload)
+  const {
+    result, error,
+  } = yield call(httpClient, payload);
 
   if (error) {
     yield put(loginFailure(error));
+    if (callback && error.message === 'Kindly verify your email first to login.') {
+      callback();
+    }
   } else {
     yield put(loginSuccess(result));
   }

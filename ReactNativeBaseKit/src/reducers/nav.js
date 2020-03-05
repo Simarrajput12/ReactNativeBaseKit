@@ -3,7 +3,7 @@ import { NavigationActions, StackActions } from 'react-navigation';
 import { REHYDRATE } from 'redux-persist';
 import { AppNavigator } from '../config/navigator';
 import { GO_BACK, RESET_NAVIGATOR } from '../actions/nav-action-types';
-import { LOGOUT_SUCCESS } from '../actions/user-actions-types';
+import { LOGOUT_SUCCESS,LOGIN_SUCCESS } from '../actions/user-actions-types';
 
 const initialRoute = 'Loader';
 const initialState = AppNavigator.router.getStateForAction(
@@ -36,6 +36,18 @@ export default function nav(state = initialState, action) {
         state
       );
 
+
+      case LOGIN_SUCCESS:
+      return AppNavigator.router.getStateForAction(
+        StackActions.reset({
+          actions: [
+            NavigationActions.navigate({ routeName:'Dashboard' }),
+          ],
+          index: 0,
+          key: null,
+        }),
+        state
+      );
     case GO_BACK:
       return AppNavigator.router.getStateForAction(
         NavigationActions.back(),

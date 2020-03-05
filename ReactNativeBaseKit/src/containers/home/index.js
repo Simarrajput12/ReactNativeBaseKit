@@ -18,13 +18,14 @@ const styles = StyleSheet.create({
 
 class Home extends React.Component {
   componentDidMount() {
-    const { getMovies } = this.props;
+    const { getMovies,userDetails } = this.props;
 
     getMovies();
   }
 
   render() {
-    const { movies } = this.props;
+    const { movies,userDetails } = this.props;
+    console.log('userDetails',userDetails)
 
     return (
       <View style={styles.container}>
@@ -61,7 +62,7 @@ Home.propTypes = {
 
 ReactMixin(Home.prototype, TimerMixin);
 
-const mapStateToProps = ({ user: { movies } }) => ({ movies });
+const mapStateToProps = ({ user: { movies,userDetails } }) => ({ movies,userDetails });
 
 export default connect(
   mapStateToProps,

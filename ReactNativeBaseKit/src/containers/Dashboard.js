@@ -14,7 +14,7 @@ const tabBarOptions = {
   lazyLoad: true,
   swipeEnabled: false,
   tabBarOptions: {
-    activeBackgroundColor: 'grey',
+    activeBackgroundColor: '#fff',
     activeTintColor: '#FF5B5B',
     inactiveBackgroundColor: '#fff',
     inactiveTintColor: 'gray',
@@ -27,8 +27,8 @@ const tabBarOptions = {
 
 const styles = StyleSheet.create({
   logo: {
-    height: 22,
-    width: 22,
+    height: 25,
+    width: 25,
   },
 });
 
@@ -39,7 +39,7 @@ const routes = {
     navigationOptions: () => ({
       tabBarIcon: ({ focused }) => (
         <Image
-          source={focused ? Constants.Images.home : Constants.Images.home}
+          source={focused ? Constants.Images.activehome : Constants.Images.home}
           style={styles.logo}
           resizeMode="contain"
         />
@@ -51,7 +51,7 @@ const routes = {
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused }) => (
         <Image
-          source={focused ? Constants.Images.profile : Constants.Images.profile}
+          source={focused ? Constants.Images.activeprofile : Constants.Images.profile}
           style={styles.logo}
           resizeMode="contain"
         />
@@ -63,7 +63,7 @@ const routes = {
     navigationOptions: () => ({
       tabBarIcon: ({ focused }) => (
         <Image
-          source={focused ? Constants.Images.message : Constants.Images.message}
+          source={focused ? Constants.Images.activemessage : Constants.Images.message}
           style={styles.logo}
           resizeMode="contain"
         />
@@ -75,7 +75,7 @@ const routes = {
     navigationOptions: () => ({
       tabBarIcon: ({ focused }) => (
         <Image
-          source={focused ? Constants.Images.more : Constants.Images.more}
+          source={focused ? Constants.Images.activemore : Constants.Images.more}
           style={styles.logo}
           resizeMode="contain"
         />

@@ -8,4 +8,8 @@ module.exports = {
   profile : require('../assets/images/profile.png'),
   message : require('../assets/images/message.png'),
   more : require('../assets/images/more.png'),
+  activehome : require('../assets/images/activehome.png'),
+  activeprofile : require('../assets/images/activeprofile.png'),
+  activemessage : require('../assets/images/activemessage.png'),
+  activemore : require('../assets/images/activemore.png'),
 };

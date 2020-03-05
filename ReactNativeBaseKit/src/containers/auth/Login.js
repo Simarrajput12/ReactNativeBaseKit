@@ -13,12 +13,13 @@ import _ from 'lodash';
 import {func, shape} from 'prop-types';
 import TimerMixin from 'react-timer-mixin';
 import ReactMixin from 'react-mixin';
+import { connect } from 'react-redux';
 import {ToastActionsCreators} from 'react-native-redux-toast';
 import Regex from '../../utilities/Regex';
 import Constants from '../../constants';
 import {AuthStyles} from '../../styles';
 import {Button, TextInput} from '../../components';
-
+import * as userActions from '../../actions/user-actions-types';
 class Login extends React.Component {
   static propTypes = {
     navigation: shape({
@@ -43,7 +44,7 @@ class Login extends React.Component {
 
     const {username, password} = this.state;
     const {
-      navigation: {dispatch, navigate},
+      navigation: {dispatch, navigate},login,deviceToken,
     } = this.props;
     const {
       enterEmail,
@@ -75,9 +76,20 @@ class Login extends React.Component {
 
       return;
     }
+    const requestObject = {
+      email: username,
+      password,
+    };
 
+    login({
+      callback: () => console.log('welcome'),
+      data: requestObject,
+    });
+    console.log('requestObject',requestObject)
     navigate('Dashboard');
   };
+    
+  
 
   handleScrollView = ref => {
     const context = this;
@@ -185,4 +197,9 @@ class Login extends React.Component {
 }
 ReactMixin(Login.prototype, TimerMixin);
 
-export default Login;
+export default connect(
+  ({ user: { deviceToken } }) => ({ deviceToken }),
+  {
+    login: userActions.login,
+  }
+)(Login);

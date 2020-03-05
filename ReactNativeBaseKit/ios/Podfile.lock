@@ -155,6 +155,8 @@ PODS:
     - React-Core (= 0.60.6)
   - React-RCTWebSocket (0.60.6):
     - React-Core (= 0.60.6)
+  - RNCAsyncStorage (1.8.1):
+    - React
   - RNDeviceInfo (5.5.3):
     - React
   - RNFirebase (5.6.0):
@@ -203,6 +205,7 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-RCTWebSocket (from `../node_modules/react-native/Libraries/WebSocket`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFirebase (from `../node_modules/react-native-firebase/ios`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
@@ -275,6 +278,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   React-RCTWebSocket:
     :path: "../node_modules/react-native/Libraries/WebSocket"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-community/async-storage"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
   RNFirebase:
@@ -327,6 +332,7 @@ SPEC CHECKSUMS:
   React-RCTText: d91537e29e38dc69cf09cbca0875cf5dc7402da6
   React-RCTVibration: 7655d72dfb919dd6d8e135ca108a5a2bd9fcd7b4
   React-RCTWebSocket: 7cd2c8d0f8ddd680dc76404defba7ab1f56b83af
+  RNCAsyncStorage: 00bdf63f7f1e0f11d3323533dba4f222e58bf092
   RNDeviceInfo: 67607dfe9cfbed105838144c40187a8392aa404d
   RNFirebase: 37daa9a346d070f9f6ee1f3b4aaf4c8e3b1d5d1c
   RNGestureHandler: dde546180bf24af0b5f737c8ad04b6f3fa51609a

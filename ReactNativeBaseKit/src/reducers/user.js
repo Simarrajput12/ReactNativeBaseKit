@@ -12,6 +12,7 @@ const initialState = {
   userDetails: null,
 };
 
+
 export default function user(state = initialState, {
   payload, type,
 }) {

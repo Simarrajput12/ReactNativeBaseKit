@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { persistCombineReducers } from 'redux-persist';
 import { toastReducer as toast } from 'react-native-redux-toast';
 import app from './app';

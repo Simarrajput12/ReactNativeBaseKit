@@ -23,7 +23,7 @@ class src extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      connection_Status : false
+      connection_Status:false
     }
   }
 
@@ -92,9 +92,8 @@ class src extends React.Component {
     const { connection_Status} = this.state;
     
     return (
-      <SafeAreaView style={{flex:1}}>
+      
       <View style={styles.container}>
-        
         <Provider store={store}>
           <PersistGate loading={<Loader />} persistor={persistor}>
           {connection_Status ?
@@ -102,7 +101,7 @@ class src extends React.Component {
           </PersistGate>
         </Provider> 
       </View>
-      </SafeAreaView>
+     
     );
   }
 }

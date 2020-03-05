@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.8.1",
     "@react-native-community/netinfo": "^1.4.0",
     "axios": "^0.18.0",
     "idx": "^2.5.0",
