@@ -55,11 +55,11 @@ class Home extends React.Component {
             </View>
           )}
         />
-        <Button
+        {/* <Button
               onPress={this.onLogout}
               style={AuthStyles.logOutbuttonStyle}
               title={'Logout'}
-            />
+            /> */}
       </View>
     );
   }

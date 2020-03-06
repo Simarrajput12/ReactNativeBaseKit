@@ -19,7 +19,6 @@ const tabBarOptions = {
     inactiveBackgroundColor: '#fff',
     inactiveTintColor: 'gray',
     showIcon: true,
-    showLabel: false,
     style: Constants.BaseStyle.TAB_GROUP_STYLE,
   },
   tabBarPosition: 'bottom',
