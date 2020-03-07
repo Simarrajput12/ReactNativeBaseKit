@@ -9,6 +9,7 @@ import {Button} from '../../components';
 import Constants from '../../constants';
 import * as userActions from '../../actions/user-actions-types';
 import {logoutSuccess} from '../../actions/user-actions-types';
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Constants.Colors.DASHBOARD_BG_COLOR,
@@ -19,9 +20,10 @@ const styles = StyleSheet.create({
 });
 
 class Home extends React.Component {
+  
+  
   componentDidMount() {
-    const { getMovies,userDetails } = this.props;
-    console.log('userDetails-----',userDetails)
+    const { getMovies } = this.props;
     getMovies();
   }
 
@@ -34,7 +36,6 @@ class Home extends React.Component {
   
   render() {
     const { movies,userDetails } = this.props;
-    console.log('userDetails',userDetails)
 
     return (
       <View style={styles.container}>
@@ -77,7 +78,7 @@ Home.propTypes = {
 
 ReactMixin(Home.prototype, TimerMixin);
 
-const mapStateToProps = ({ user: { movies,userDetails } }) => ({ movies,userDetails });
+const mapStateToProps = ({ user: { movies } }) => ({ movies });
 
 export default connect(
   mapStateToProps,
